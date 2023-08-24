@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Prediction</h1>
+        <form method="post" action="/predict">
+            <label for="Nitrogen">Nitrogen:</label>
+            <input type="text" id="Nitrogen" name="Nitrogen" required><br>
+            
+            <label for="Phosporus">Phosphorus:</label>
+            <input type="text" id="Phosporus" name="Phosporus" required><br>
+            
+            <label for="Potassium">Potassium:</label>
+            <input type="text" id="Potassium" name="Potassium" required><br>
+            
+            <label for="Temperature">Temperature:</label>
+            <input type="text" id="Temperature" name="Temperature" required><br>
+            
+            <label for="Humidity">Humidity:</label>
+            <input type="text" id="Humidity" name="Humidity" required><br>
+            
+            <label for="Ph">pH:</label>
+            <input type="text" id="Ph" name="Ph" required><br>
+            
+            <label for="Rainfall">Rainfall:</label>
+            <input type="text" id="Rainfall" name="Rainfall" required><br>
+            
+            <input type="submit" value="Predict">
+        </form>
+        <div class="result">
+            {% if result %}
+                {{ result }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
